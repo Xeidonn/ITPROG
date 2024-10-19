@@ -1,43 +1,50 @@
 let cart = [];
 let cartTotal = 0;
 
-// Function to add items to the cart
 function addToCart(itemName, price) {
-    // Add item to the cart array
     cart.push({ name: itemName, price: price });
-    
-    // Recalculate total
     cartTotal += price;
-
-    // Update the cart display
     updateCart();
 }
 
-// Function to update cart display
 function updateCart() {
     let cartItemsDiv = document.getElementById('cartItems');
     let cartTotalSpan = document.getElementById('cartTotal');
-
-    // Clear the cart items display
     cartItemsDiv.innerHTML = '';
-
-    // Loop through the cart array and display each item
     cart.forEach((item, index) => {
         cartItemsDiv.innerHTML += `<div class="cart-item">${item.name} - ₱${item.price} <button onclick="removeFromCart(${index})">Remove</button></div>`;
     });
-
-    // Update the total
     cartTotalSpan.innerText = cartTotal;
 }
 
-// Function to remove items from the cart
 function removeFromCart(index) {
-    // Deduct the price from the total
     cartTotal -= cart[index].price;
-
-    // Remove item from cart array
     cart.splice(index, 1);
-
-    // Update the cart display
     updateCart();
 }
+
+// Carousel slider logic for New Arrivals
+let newArrivalsSlideIndex = 0;
+const newArrivalsSlider = document.querySelector('.new-arrivals-slider');
+const newArrivalsSlides = document.querySelectorAll('.new-arrivals-slider .perfume');
+const newArrivalsVisibleSlides = 4;  // Limit to 4 perfumes
+
+function showNewArrivalsSlides(index) {
+    const maxIndex = newArrivalsSlides.length - newArrivalsVisibleSlides;
+    if (index < 0) newArrivalsSlideIndex = 0;
+    else if (index > maxIndex) newArrivalsSlideIndex = maxIndex;
+    else newArrivalsSlideIndex = index;
+    const offset = -(newArrivalsSlideIndex * (100 / newArrivalsVisibleSlides));
+    newArrivalsSlider.style.transform = `translateX(${offset}%)`;
+}
+
+function nextNewArrivalsSlide() {
+    showNewArrivalsSlides(newArrivalsSlideIndex + 1);
+}
+
+function prevNewArrivalsSlide() {
+    showNewArrivalsSlides(newArrivalsSlideIndex - 1);
+}
+
+// Initialize the new arrivals slider
+showNewArrivalsSlides(newArrivalsSlideIndex);

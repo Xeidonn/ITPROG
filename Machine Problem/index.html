@@ -26,23 +26,69 @@
 
     <section class="banner">
         <h2>Best Sellers</h2>
-        <div class="perfume-slider">
+        <div class="perfume-slider best-seller-slider">
             <div class="perfume">
-                <img src="perfume1.jpg" alt="BOUQUET DE HONGARIE EDP">
-                <h3>BOUQUET DE HONGARIE EDP 100ML</h3>
-                <p>₱11,970.00</p>
-                <button>Add to Cart</button>
+                <img src="perfume1.jpg" alt="Christian Dior Sauvage EDP 100ml">
+                <h3>Christian Dior Sauvage EDP 100ml</h3>
+                <p>₱7,500.00</p>
+                <button>ADD TO CART</button>
             </div>
-            <!-- Add more perfume items here -->
+            <div class="perfume">
+                <img src="perfume4.jpg" alt="Versace Eros EDP 200ml">
+                <h3>Versace Eros EDP 200ml</h3>
+                <p>₱8,700.00</p>
+                <button>ADD TO CART</button>
+            </div>
+            <div class="perfume">
+                <img src="perfume1.jpg" alt="Christian Dior Sauvage EDP 100ml">
+                <h3>Christian Dior Sauvage EDP 100ml</h3>
+                <p>₱7,500.00</p>
+                <button>ADD TO CART</button>
+            </div>
+            <div class="perfume">
+                <img src="perfume4.jpg" alt="Versace Eros EDP 200ml">
+                <h3>Versace Eros EDP 200ml</h3>
+                <p>₱8,700.00</p>
+                <button>ADD TO CART</button>
+            </div>
         </div>
     </section>
 
-    <section class="cart">
-        <h2>Your Cart</h2>
-        <div id="cartItems"></div>
-        <p>Total: ₱<span id="cartTotal">0</span></p>
+    <!-- New Arrivals Section with 4 Perfumes -->
+    <section class="new-arrivals">
+        <h2>NEW ARRIVAL</h2>
+        <div class="carousel-container">
+            <button class="prev new-arrivals-prev" onclick="prevNewArrivalsSlide()">&#10094;</button>
+            <div class="perfume-slider new-arrivals-slider">
+                <div class="perfume2">
+                    <img src="perfume6.jpg" alt="INGENIOUS GINGER PERFUME 100ML">
+                    <h3>INGENIOUS GINGER PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button2>ADD TO CART</button2>
+                </div>
+                <div class="perfume2">
+                    <img src="perfume7.jpg" alt="SUNSET HOUR PERFUME 100ML">
+                    <h3>SUNSET HOUR PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button2>ADD TO CART</button2>
+                </div>
+                <div class="perfume2">
+                    <img src="perfume8.jpg" alt="BOHEMIAN LIME PERFUME 100ML">
+                    <h3>BOHEMIAN LIME PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button2>ADD TO CART</button2>
+                </div>
+                <div class="perfume2">
+                    <img src="perfume9.jpg" alt="WOOD INFUSION PERFUME 100ML">
+                    <h3>WOOD INFUSION PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button2>ADD TO CART</button2>
+                </div>
+
+            </div>
+            <button class="next new-arrivals-next" onclick="nextNewArrivalsSlide()">&#10095;</button>
+        </div>
     </section>
 
-    <script src="script.js"></script>
 </body>
 </html>

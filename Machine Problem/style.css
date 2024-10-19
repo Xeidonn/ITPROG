@@ -58,13 +58,37 @@ nav a:hover {
 /* Banner Section */
 .banner {
     padding: 40px;
-    background-color: #168092;
+    background-color: #E9EED9;
     text-align: center;
 }
 
 .banner h2 {
     font-size: 28px;
     margin-bottom: 20px;
+}
+
+.banner2 {
+    padding: 40px;
+    background-color: #CBD2A4;
+    text-align: center;
+}
+
+.banner2 h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* New Arrivals Section */
+.new-arrivals {
+    padding: 40px;
+    background-color: #CBD2A4;
+    text-align: center;
+}
+
+.new-arrivals h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 /* Perfume Cards */
@@ -75,18 +99,30 @@ nav a:hover {
 }
 
 .perfume {
-    background-color: white;
-    border: 1px solid #449DAC;
+    background-color: #CBD2A4;
     padding: 20px;
+    border-radius: 8px;
     width: 18%;
     text-align: center;
     margin: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.perfume img {
-    width: 100%;
-    height: auto;
+.perfume2 {
+    background-color: #E9EED9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 18%;
+    text-align: center;
+    margin: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.perfume img, .perfume2 img {
+    max-width: 100%;
+    max-height: auto;
+    padding-top: auto;
+    padding-bottom: auto;
 }
 
 .perfume h3 {
@@ -101,33 +137,97 @@ nav a:hover {
 }
 
 button {
-    background-color: black;
-    color: white;
+    background-color: #E9EED9;
+    color: black;
     padding: 10px 15px;
-    border: none;
+    border: 2px solid black;
     cursor: pointer;
-    border-radius: px;
+    font-family: Helvetica !important;
+    font-size: 8.8px;
+    font-weight: 600;
+    letter-spacing: .2em;
+}
+
+button2 {
+    background-color: #CBD2A4;
+    color: black;
+    padding: 10px 15px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: Helvetica !important;
+    font-size: 8.8px;
+    font-weight: 600;
+    letter-spacing: .2em;
 }
 
 button:hover {
-    background-color: #2C4A4E;
-    color: white;
+    background-color: black;
+    color: #E9EED9;
     padding: 10px 15px;
-    border-radius: 7px;
+    font-size: 8.8px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    font-family: Helvetica !important;
 }
 
-/* Cart Section */
-.cart {
-    padding: 20px;
-    margin: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+button2:hover {
+    background-color: black;
+    color: #E9EED9;
+    padding: 10px 15px;
+    font-size: 8.8px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    font-family: Helvetica !important;
 }
 
-.cart h2 {
-    margin-top: 0;
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    overflow:hidden;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
-.cart-item {
-    margin-bottom: 10px;
+.new-arrivals-slider {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+    gap: 0px;
 }
+
+
+/* Carousel Arrow Buttons */
+.new-arrivals-prev, .new-arrivals-next {
+    position: absolute;
+    top: 50%;
+    transform:translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 100px;
+}
+
+.new-arrivals-prev {
+    left: 10px;
+}
+
+.new-arrivals-next {
+    right: 10px;
+}
+
+.new-arrivals-prev:hover, .new-arrivals-next:hover {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #E9EED9;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 100;
+}
+
