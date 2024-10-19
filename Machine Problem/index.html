@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scent Bonanza - Perfume Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>SCENT BONANZA</h1>
+                <p>Scatter your scent</p>
+            </div>
+            <nav>
+                <a href="#">HOME</a>
+                <a href="#">SHOP</a>
+                <a href="#">BRANDS</a>
+                <a href="#">ABOUT</a>
+                <a href="#">CART (0)</a>
+                <a href="#">LOGIN</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <h2>Best Sellers</h2>
+        <div class="perfume-slider">
+            <div class="perfume">
+                <img src="perfume1.jpg" alt="BOUQUET DE HONGARIE EDP">
+                <h3>BOUQUET DE HONGARIE EDP 100ML</h3>
+                <p>₱11,970.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Add more perfume items here -->
+        </div>
+    </section>
+
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <p>Total: ₱<span id="cartTotal">0</span></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
