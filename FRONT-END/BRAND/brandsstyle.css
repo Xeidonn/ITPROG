@@ -1,0 +1,166 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: bold;
+    color: black;
+    position: relative;
+    left: 45px;
+    letter-spacing: 8px;
+    font-family: Helvetica !important;
+}
+
+.logo p {
+    font-size: 16px;
+    position: relative;
+    left: 97px;
+    letter-spacing: 6px;
+    font-family: Helvetica !important;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #D5ED9F;
+}
+
+
+/* Brands Section */
+.brands-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.brands-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Brands Grid */
+.brands-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.brand-card {
+    background-color: #CBD2A4;
+    padding: 20px;
+    border-radius: 8px;
+    width: 20%;
+    text-align: center;
+    margin: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card img {
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.brand-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.brand-card button {
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+.brand-card button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.footer {
+    background-color: #F1F3C2;
+    padding-bottom: 15px;
+    color: #272727;
+}
+.footer-container {
+    padding-top: 50px;
+    display: flex;
+    justify-content:space-between;
+    margin: 0 auto;
+    width: 85%;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0; 
+}
+
+.footer-section ul li a {
+    color: black;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section form {
+    margin-top: 15px;
+}
+
+.footer-section input[type="email"] {
+    padding: 8px;
+    margin-right: 5px;
+}
+
+.footer-section button {
+    padding: 10px 12px;
+    background-color: #CBD2A4;
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 2px solid #bebcbc6b;
+    margin-top: 20px;
+    padding-top: 15px;
+}
