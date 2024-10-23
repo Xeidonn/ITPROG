@@ -80,8 +80,9 @@ nav a:hover {
 
 .brand-card img {
     max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
 .brand-card h3 {
