@@ -1,11 +1,11 @@
 // Define the list of brands
 const brands = [
-    { name: "Dior", image: "dior.jpg" },
-    { name: "Versace", image: "versace.jpg" },
-    { name: "Chanel", image: "chanel.jpg" },
-    { name: "Creed", image: "creed.jpg" },
-    { name: "Prada", image: "prada.jpg" },
-    { name: "Yves Saint Laurent", image: "ysl.jpg" },
+    { name: "Dior", image: "brandimages/dior.png" },
+    { name: "Versace", image: "brandimages/versace.png" },
+    { name: "Chanel", image: "brandimages/chanel.png" },
+    { name: "Creed", image: "brandimages/creed.png" },
+    { name: "Prada", image: "brandimages/prada.png" },
+    { name: "Yves Saint Laurent", image: "brandimages/ysl.png" },
     // Add more brands as needed
 ];
 
