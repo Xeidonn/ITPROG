@@ -3,26 +3,26 @@ const products = [
     //  NAME, CONCENTRATION, SIZE, BRAND, PRICE, IMAGE
         
         // DIOR
-    { name: "Dior Sauvage EDP 100ml", concentration: "EDP", size: "100ml", brand: "Dior", price: 7500, image: "dior-sauvage.jpg" },
+    { name: "Dior Sauvage EDP 100ml", concentration: "EDP", size: "100ml", brand: "Dior", price: 7500, image: "productsImages/dior-sauvage.png" },
     //add more if ever
 
         // VERSACE
-    { name: "Versace Eros EDP 200ml", concentration: "EDP", size: "200ml", brand: "Versace", price: 8700, image: "versace-eros.jpg" },
+    { name: "Versace Eros EDP 200ml", concentration: "EDP", size: "200ml", brand: "Versace", price: 8700, image: "productsImages/versace-eros.png" },
     //add more if ever
 
         // CHANEL
-    { name: "Chanel Bleu de Chanel EDP 100ml", concentration: "EDP", size: "100ml", brand: "Chanel", price: 9000, image: "chanel-bleu.jpg" },
+    { name: "Chanel Bleu de Chanel EDP 100ml", concentration: "EDP", size: "100ml", brand: "Chanel", price: 9000, image: "productsImages/chanel-bleu.png" },
     //add more if ever
 
         // CREED
-    { name: "Creed Aventus 100ml", brand: "Creed", concentration: "EDP", size: "100ml", price: 28000, image: "creed-aventus.jpg" },
+    { name: "Creed Aventus 100ml", brand: "Creed", concentration: "EDP", size: "100ml", price: 28000, image: "productsImages/creed-aventus.png" },
 
         // PRADA
-    { name: "Prada Luna Rossa Ocean EDP 100ml", concentration: "EDP", size: "100ml", brand: "Prada", price: 8500, image: "prada-lunna-rossa-ocean.jpg" },
+    { name: "Prada Luna Rossa Ocean EDP 100ml", concentration: "EDP", size: "100ml", brand: "Prada", price: 8500, image: "productsImages/prada-lunna-rossa-ocean.png" },
     //add more if ever
 
         // YVES SAINT LAURENT
-    { name: "Yves Saint Laurent Y EDP 60ml", concentration: "EDP", size: "60ml", brand: "Yves Saint Laurent", price: 7000, image: "ysl-y.jpg" },
+    { name: "Yves Saint Laurent Y EDP 60ml", concentration: "EDP", size: "60ml", brand: "Yves Saint Laurent", price: 7000, image: "productsImages/ysl-y.png" },
     //add more if ever
 
 
