@@ -48,28 +48,60 @@ function removeFromCart(index) {
 }
 
 // Carousel slider logic for New Arrivals
-let newArrivalsSlideIndex = 0;
-const newArrivalsSlider = document.querySelector('.new-arrivals-slider');
-const newArrivalsSlides = document.querySelectorAll('.new-arrivals-slider .perfume');
-const newArrivalsVisibleSlides = 4;  // Limit to 4 perfumes
 
-function showNewArrivalsSlides(index) {
-    const maxIndex = newArrivalsSlides.length - newArrivalsVisibleSlides;
-    if (index < 0) newArrivalsSlideIndex = 0;
-    else if (index > maxIndex) newArrivalsSlideIndex = maxIndex;
-    else newArrivalsSlideIndex = index;
-    const offset = -(newArrivalsSlideIndex * (100 / newArrivalsVisibleSlides));
+// Number of items to show
+const slidesToShow = 4; 
+const slideWidth = 100 / slidesToShow;
+
+// Set width for each perfume dynamically
+newArrivalsSlides.forEach(slide => {
+    slide.style.flex = `0 0 ${slideWidth}%`;
+});
+
+let currentIndex = 1; // Start at the first slide
+
+// Update the slide position dynamically based on current index
+function updateSlidePosition() {
+    const offset = -currentIndex * slideWidth;
     newArrivalsSlider.style.transform = `translateX(${offset}%)`;
 }
 
-function nextNewArrivalsSlide() {
-    showNewArrivalsSlides(newArrivalsSlideIndex + 1);
+// Event listeners for navigation
+document.querySelector('.next').addEventListener('click', () => {
+    const totalSlides = newArrivalsSlider.querySelectorAll('.perfume').length;
+    if (currentIndex < totalSlides - slidesToShow) {
+        currentIndex++;
+        updateSlidePosition();
+    }
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+    if (currentIndex > 1) {
+        currentIndex--;
+        updateSlidePosition();
+    }
+});
+
+
+// Function to add a new perfume
+function addNewPerfume(name, price) {
+    const newPerfume = document.createElement('div');
+    newPerfume.classList.add('perfume');
+    newPerfume.style.flex = `0 0 ${slideWidth}%`;
+    newPerfume.innerHTML = `
+        <h3>${name}</h3>
+        <p>₱${price}</p>
+        <button onclick="addToCart('${name}', ${price})">Add to Cart</button>`;
+    newArrivalsSlider.appendChild(newPerfume);
+
+    // Update the total width of the carousel track
+    const totalSlides = newArrivalsSlider.querySelectorAll('.perfume').length;
+    newArrivalsSlider.style.width = `${totalSlides * slideWidth}%`;
+
+    // Ensure slider works with the new slide
+    updateSlidePosition();
 }
 
-function prevNewArrivalsSlide() {
-    showNewArrivalsSlides(newArrivalsSlideIndex - 1);
-}
 
 // Initialize the new arrivals slider
 showNewArrivalsSlides(newArrivalsSlideIndex);
-

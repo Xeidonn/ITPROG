@@ -6,6 +6,8 @@ const brands = [
     { name: "Creed", image: "brandimages/creed.png" },
     { name: "Prada", image: "brandimages/prada.png" },
     { name: "Yves Saint Laurent", image: "brandimages/ysl.png" },
+    { name: "Jean Paul Gaultier", image:"brandimages/jpg.png"},
+    { name: "Roja Parfum", image:"brandimages/roja.png"}
     // Add more brands as needed
 ];
 
