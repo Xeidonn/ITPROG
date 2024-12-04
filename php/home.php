@@ -1,23 +1,5 @@
 <?php
-session_start(); // Start the session at the very top
-
-// Handle the form submission to add products to the cart
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve the product data from the POST request
-    $productName = $_POST['product_name'];
-    $productPrice = $_POST['product_price'];
-
-    // Add the product to the session cart array
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-    // Push the product details into the cart array
-    $_SESSION['cart'][] = ['name' => $productName, 'price' => $productPrice];
-
-    // Redirect to the same page to prevent duplicate form submissions
-    header("Location: " . $_SERVER['REQUEST_URI']);
-    exit(); // Ensure no further code is executed after the redirect
-}
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include '../php/header.php'; ?>
 
     <div id="slideshow">
-        <!-- Your slideshow code -->
         <div class="slides">
           <div class="slide active">
             <img src="../images/dior-banner.jpg" alt="Slide 1" style="width:100%; height:100%;">
@@ -59,70 +40,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>BEST SELLERS</h2>
         <div class="perfume-slider best-seller-slider">
             <?php
-            // Array of best sellers
             $bestSellers = [
                 ['img' => '../images/perfume10.jpg', 'name' => 'Versace Eros EDP 200ml', 'price' => '₱8,700.00'],
-                ['img' => '../images/perfume10.jpg', 'name' => 'Chanel Bleu de Chanel 100ml', 'price' => '₱9,500.00'],
-                ['img' => '../images/perfume10.jpg', 'name' => 'Dior Sauvage EDP 100ml', 'price' => '₱8,200.00'],
-                ['img' => '../images/perfume10.jpg', 'name' => 'Gucci Guilty EDP 90ml', 'price' => '₱7,800.00'],
+                ['img' => '../images/perfume10.jpg', 'name' => 'Versace Eros EDP 200ml', 'price' => '₱8,700.00'],
+                ['img' => '../images/perfume10.jpg', 'name' => 'Versace Eros EDP 200ml', 'price' => '₱8,700.00'],
+                ['img' => '../images/perfume10.jpg', 'name' => 'Versace Eros EDP 200ml', 'price' => '₱8,700.00'],
+                // Add more products here as needed
             ];
 
-            // Loop through each product and display it in a form
             foreach ($bestSellers as $product) {
-                echo "<div class='perfume'>";
-                echo "<form method='POST'>";
-                echo "<img src='" . $product['img'] . "' alt='" . htmlspecialchars($product['name']) . "'>";
-                echo "<h3>" . htmlspecialchars($product['name']) . "</h3>";
-                echo "<p>" . htmlspecialchars($product['price']) . "</p>";
-
-                // Add hidden fields for product name and price
-                echo "<input type='hidden' name='product_name' value='" . htmlspecialchars($product['name']) . "'>";
-                echo "<input type='hidden' name='product_price' value='" . htmlspecialchars($product['price']) . "'>";
-
-                // Add to Cart button
-                echo "<button type='submit'>ADD TO CART</button>";
-                echo "</form>";
-                echo "</div>";
+                echo '<div class="perfume">';
+                echo '<img src="' . $product['img'] . '" alt="' . $product['name'] . '">';
+                echo '<h3>' . $product['name'] . '</h3>';
+                echo '<p>' . $product['price'] . '</p>';
+                echo '<button>ADD TO CART</button>';
+                echo '</div>';
             }
             ?>
         </div>
     </section>
 
     <section class="new-arrivals">
-        <h2>NEW ARRIVAL</h2>
-        <div class="carousel-container">
-            <button class="new-arrivals-prev" onclick="prevNewArrivalsSlide()">&#10094;</button>
-            <div class="perfume-slider new-arrivals-slider">
-                <?php
-                // Array of new arrivals
-                $newArrivals = [
-                    ['img' => '../images/perfume6.jpg', 'name' => 'INGENIOUS GINGER PERFUME 100ML', 'price' => '₱2,160.00'],
-                    ['img' => '../images/perfume7.jpg', 'name' => 'SUNSET HOUR PERFUME 100ML', 'price' => '₱2,160.00'],
-                    ['img' => '../images/perfume8.jpg', 'name' => 'BOHEMIAN LIME PERFUME 100ML', 'price' => '₱2,160.00'],
-                    ['img' => '../images/perfume9.jpg', 'name' => 'WOOD INFUSION PERFUME 100ML', 'price' => '₱2,160.00'],
-                ];
-
-                // Loop through each new arrival product and display it in a form
-                foreach ($newArrivals as $product) {
-                    echo "<div class='perfume2'>";
-                    echo "<form method='POST'>";
-                    echo "<img src='" . $product['img'] . "' alt='" . htmlspecialchars($product['name']) . "'>";
-                    echo "<h3>" . htmlspecialchars($product['name']) . "</h3>";
-                    echo "<p>" . htmlspecialchars($product['price']) . "</p>";
-
-                    // Add hidden fields for product name and price
-                    echo "<input type='hidden' name='product_name' value='" . htmlspecialchars($product['name']) . "'>";
-                    echo "<input type='hidden' name='product_price' value='" . htmlspecialchars($product['price']) . "'>";
-
-                    // Add to Cart button
-                    echo "<button type='submit'>ADD TO CART</button>";
-                    echo "</form>";
-                    echo "</div>";
-                }
-                ?>
-            </div>
-            <button class="new-arrivals-next" onclick="nextNewArrivalsSlide()">&#10095;</button>
+    <h2>NEW ARRIVAL</h2>
+    <div class="carousel-container">
+    <button class="new-arrivals-prev" onclick="prevNewArrivalsSlide()">&#10094;</button>
+        <div class="perfume-slider new-arrivals-slider">
+            <div class="carousel-track"></div>
+                <div class="perfume2">
+                    <img src="../images/perfume6.jpg" alt="INGENIOUS GINGER PERFUME 100ML">
+                    <h3>INGENIOUS GINGER PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button>ADD TO CART</button>
+                </div>
+                <div class="perfume2">
+                    <img src="../images/perfume7.jpg" alt="SUNSET HOUR PERFUME 100ML">
+                    <h3>SUNSET HOUR PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button>ADD TO CART</button>
+                </div>
+                <div class="perfume2">
+                    <img src="../images/perfume8.jpg" alt="BOHEMIAN LIME PERFUME 100ML">
+                    <h3>BOHEMIAN LIME PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button>ADD TO CART</button>
+                </div>
+                <div class="perfume2">
+                    <img src="../images/perfume9.jpg" alt="WOOD INFUSION PERFUME 100ML">
+                    <h3>WOOD INFUSION PERFUME 100ML</h3>
+                    <p>FROM ₱2,160.00</p>
+                    <button>ADD TO CART</button>
+                </div>
         </div>
+    <button class="new-arrivals-next" onclick="nextNewArrivalsSlide()">&#10095;</button>
+    </div>
     </section>
 
     <?php include '../php/footer.php'; ?>

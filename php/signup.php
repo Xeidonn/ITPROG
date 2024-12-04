@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt->execute([$first_name, $last_name, $email, $password]);
         // After a certain condition (e.g., user logs in)
-        header("Location: ../php/home.php");
+        header("Location: ../php/login.php");
         exit;  // Always call exit after the header redirect to ensure the script stops executing.
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();

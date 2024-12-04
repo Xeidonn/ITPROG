@@ -1,25 +1,6 @@
 <?php
-session_start(); // Start session to store cart data
-
-// Handle the form submission to add products to the cart
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve the product data from the POST request
-    $productName = $_POST['product_name'];
-    $productPrice = $_POST['product_price'];
-
-    // Add the product to the session cart array
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-    // Push the product details into the cart array
-    $_SESSION['cart'][] = ['name' => $productName, 'price' => $productPrice];
-
-    // Redirect to the same page to prevent duplicate form submissions
-    header("Location: " . $_SERVER['REQUEST_URI']);
-    exit(); // Ensure no further code is executed after the redirect
-}
+session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <?php include '../php/header.php'; ?>
-
     <section class="products-section">
         <h2 id="productTitle">Our Products</h2>
 
@@ -65,37 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="best-seller">Best Seller</option>
             <option value="old-new">Oldest to Newest</option>
         </select>
+    </div>
 
+    
         <!-- Products List -->
         <div class="perfume-slider" id="productList">
-            <?php
-            // Define products array
-            $products = [
-                ["name" => "Dior Sauvage EDP 100ml", "concentration" => "EDP", "size" => "100ml", "brand" => "Dior", "price" => 7500, "image" => "../images/productsimages/dior-sauvage.png"],
-                ["name" => "Versace Eros EDP 200ml", "concentration" => "EDP", "size" => "200ml", "brand" => "Versace", "price" => 8700, "image" => "../images/productsimages/versace-eros.png"],
-                ["name" => "Chanel Bleu de Chanel EDP 100ml", "concentration" => "EDP", "size" => "100ml", "brand" => "Chanel", "price" => 9000, "image" => "../images/productsImages/chanel-bleu.png"],
-                ["name" => "Creed Aventus 100ml", "concentration" => "EDP", "size" => "100ml", "brand" => "Creed", "price" => 28000, "image" => "../images/productsimages/creed-aventus.png"],
-                ["name" => "Prada Luna Rossa Ocean EDP 100ml", "concentration" => "EDP", "size" => "100ml", "brand" => "Prada", "price" => 8500, "image" => "../images/productsimages/prada-lunna-rossa-ocean.png"],
-                ["name" => "Yves Saint Laurent Y EDP 60ml", "concentration" => "EDP", "size" => "60ml", "brand" => "Yves Saint Laurent", "price" => 7000, "image" => "../images/productsimages/ysl-y.png"]
-            ];
-
-            foreach ($products as $product) {
-                echo "<div class='perfume' data-price='" . $product['price'] . "' data-concentration='" . $product['concentration'] . "' data-size='" . $product['size'] . "'>";
-                echo "<form method='POST'>";
-                echo "<img src='" . $product['image'] . "' alt='" . htmlspecialchars($product['name']) . "'>";
-                echo "<h3>" . htmlspecialchars($product['name']) . "</h3>";
-                echo "<p>Price: ₱" . number_format($product['price'], 2) . "</p>";
-                echo "<input type='hidden' name='product_name' value='" . htmlspecialchars($product['name']) . "'>";
-                echo "<input type='hidden' name='product_price' value='" . $product['price'] . "'>";
-                echo "<button type='submit'>ADD TO CART</button>";
-                echo "</form>";
-                echo "</div>";
-            }
-            ?>
         </div>
     </section>
-
     <?php include '../php/footer.php'; ?>
-    <script src="../javascript/script.js"></script>
+    <script src="../javascript/productsscript.js"></script>
 </body>
 </html>
