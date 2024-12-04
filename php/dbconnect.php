@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'SCENTBONANZADB';
+$dbname = 'scentbonanza';
 $user = 'root';
 $password = '';
 
