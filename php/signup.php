@@ -1,5 +1,5 @@
 <?php
-require '../dbconnect.php'; // Database connection.
+require '../php/dbconnect.php'; // Database connection.
 ?>
 
 <!DOCTYPE html>
