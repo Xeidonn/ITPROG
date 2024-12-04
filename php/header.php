@@ -21,7 +21,20 @@
                 <a href="../php/brands.php">BRANDS</a>
                 <a href="../php/about-us.php">ABOUT</a>
 
-                <a href="../php/cart.php">CART (<span id="cartCount"><?php echo isset($_SESSION['cartCount']) ? $_SESSION['cartCount'] : 0; ?></span>)</a>
+                <!-- Cart link with dynamic item count -->
+                <a href="../php/cart.php">CART 
+                    <span id="cartDisplayCount">
+                        <?php 
+                            // Check if the cart exists and count the items
+                            if (isset($_SESSION['cart'])) {
+                                $totalItems = count($_SESSION['cart']); // Get the number of items in the cart
+                                echo "($totalItems)";
+                            } else {
+                                echo "(0)"; // If the cart is empty, show 0
+                            }
+                        ?>
+                    </span>
+                </a>
 
                 <?php if (isset($_SESSION["user"])): ?>
                     <span class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></span>

@@ -1,107 +1,86 @@
-/* Slideshow */
-let slideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
+// Get all the elements
+const priceRange = document.getElementById('priceRange');
+const priceRangeValue = document.getElementById('priceRangeValue');
+const concentrationSelect = document.getElementById('concentrationSelect');
+const sizeSelect = document.getElementById('sizeSelect');
+const sortSelect = document.getElementById('sortSelect');
+const productList = document.getElementById('productList');
 
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.opacity = "0";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.opacity = "1";
+// Update price range display
+priceRange.addEventListener('input', () => {
+    const minPrice = priceRange.min;
+    const maxPrice = priceRange.max;
+    const value = priceRange.value;
+    priceRangeValue.textContent = `₱${value} - ₱${maxPrice}`;
+    filterProducts();
+});
 
-  // Dots
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
-}
+// Update product list based on filter
+function filterProducts() {
+    const price = priceRange.value;
+    const concentration = concentrationSelect.value;
+    const size = sizeSelect.value;
 
-showSlides();
+    const perfumes = document.querySelectorAll('.perfume');
+    perfumes.forEach(perfume => {
+        const productPrice = parseInt(perfume.getAttribute('data-price'));
+        const productConcentration = perfume.getAttribute('data-concentration');
+        const productSize = perfume.getAttribute('data-size');
 
-/* Cart */
-let cart = [];
-let cartTotal = 0;
+        let show = true;
 
-function addToCart(itemName, price) {
-    cart.push({ name: itemName, price: price });
-    cartTotal += price;
-    updateCart();
-}
+        // Price filter
+        if (productPrice > price) {
+            show = false;
+        }
 
-function updateCart() {
-    let cartItemsDiv = document.getElementById('cartItems');
-    let cartTotalSpan = document.getElementById('cartTotal');
-    cartItemsDiv.innerHTML = '';
-    cart.forEach((item, index) => {
-        cartItemsDiv.innerHTML += `<div class="cart-item">${item.name} - ₱${item.price} <button onclick="removeFromCart(${index})">Remove</button></div>`;
+        // Concentration filter
+        if (concentration !== 'all' && concentration !== productConcentration) {
+            show = false;
+        }
+
+        // Size filter
+        if (size !== 'all' && size !== productSize) {
+            show = false;
+        }
+
+        if (show) {
+            perfume.style.display = 'block';
+        } else {
+            perfume.style.display = 'none';
+        }
     });
-    cartTotalSpan.innerText = cartTotal;
 }
 
-function removeFromCart(index) {
-    cartTotal -= cart[index].price;
-    cart.splice(index, 1);
-    updateCart();
-}
-
-// Carousel slider logic for New Arrivals
-
-// Number of items to show
-const slidesToShow = 4; 
-const slideWidth = 100 / slidesToShow;
-
-// Set width for each perfume dynamically
-newArrivalsSlides.forEach(slide => {
-    slide.style.flex = `0 0 ${slideWidth}%`;
-});
-
-let currentIndex = 1; // Start at the first slide
-
-// Update the slide position dynamically based on current index
-function updateSlidePosition() {
-    const offset = -currentIndex * slideWidth;
-    newArrivalsSlider.style.transform = `translateX(${offset}%)`;
-}
-
-// Event listeners for navigation
-document.querySelector('.next').addEventListener('click', () => {
-    const totalSlides = newArrivalsSlider.querySelectorAll('.perfume').length;
-    if (currentIndex < totalSlides - slidesToShow) {
-        currentIndex++;
-        updateSlidePosition();
+// Sorting functionality
+sortSelect.addEventListener('change', () => {
+    const sortBy = sortSelect.value;
+    let perfumes = Array.from(document.querySelectorAll('.perfume'));
+    switch (sortBy) {
+        case 'price-low-high':
+            perfumes.sort((a, b) => parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price')));
+            break;
+        case 'price-high-low':
+            perfumes.sort((a, b) => parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price')));
+            break;
+        case 'alphabetical':
+            perfumes.sort((a, b) => a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText));
+            break;
+        case 'best-seller':
+            // Implement based on your own criteria (for now, no change)
+            break;
+        case 'old-new':
+            // Implement based on your own criteria (for now, no change)
+            break;
+        default:
+            break;
     }
+
+    // Reattach sorted perfumes
+    perfumes.forEach(perfume => {
+        productList.appendChild(perfume);
+    });
 });
 
-document.querySelector('.prev').addEventListener('click', () => {
-    if (currentIndex > 1) {
-        currentIndex--;
-        updateSlidePosition();
-    }
-});
-
-
-// Function to add a new perfume
-function addNewPerfume(name, price) {
-    const newPerfume = document.createElement('div');
-    newPerfume.classList.add('perfume');
-    newPerfume.style.flex = `0 0 ${slideWidth}%`;
-    newPerfume.innerHTML = `
-        <h3>${name}</h3>
-        <p>₱${price}</p>
-        <button onclick="addToCart('${name}', ${price})">Add to Cart</button>`;
-    newArrivalsSlider.appendChild(newPerfume);
-
-    // Update the total width of the carousel track
-    const totalSlides = newArrivalsSlider.querySelectorAll('.perfume').length;
-    newArrivalsSlider.style.width = `${totalSlides * slideWidth}%`;
-
-    // Ensure slider works with the new slide
-    updateSlidePosition();
-}
-
-
-// Initialize the new arrivals slider
-showNewArrivalsSlides(newArrivalsSlideIndex);
+// Initialize the filters
+filterProducts();
