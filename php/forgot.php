@@ -1,5 +1,5 @@
 <?php
-require '../dbconnect.php'; // Database connection.
+require '../php/dbconnect.php'; // Database connection.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
