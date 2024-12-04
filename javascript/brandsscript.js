@@ -4,7 +4,7 @@ const brands = [
     { name: "Versace", image: "../images/versace-brand.png" },
     { name: "Chanel", image: "../images/chanel-brand.png" },
     { name: "Creed", image: "../images/creed-brand.png" },
-    { name: "Prada", image: "../images/prada.png" },
+    { name: "Prada", image: "../images/prada-brand.png" },
     { name: "Yves Saint Laurent", image: "../images/ysl-brand.png" },
     { name: "Jean Paul Gaultier", image:"../images/jpg-brand.png"},
     { name: "Roja Parfum", image:"../images/roja-brand.png"}
