@@ -906,3 +906,92 @@ h1 {
     width: 100%;
     border-radius: 10px;
 }
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th {
+    background-color: #CBD2A4;
+    color: black; 
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+}
+
+table td {
+    background-color: #fff;
+    color: black;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Hover effect for table rows */
+table tr:hover td {
+    background-color: #f1f1f1;
+}
+
+/* Search Box Styling */
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+    color: black;
+    background-color: #fff;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #CBD2A4;
+    box-shadow: 0 0 5px rgba(200, 220, 120, 0.5);
+}
+
+/* Buttons Styling */
+.button {
+    padding: 8px 15px;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: #CBD2A4;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: #A8C89E;
+    color: white;
+}
+
+/* Search Bar Button Styling */
+.search-bar button {
+    background-color: #CBD2A4; 
+    color: black;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border: 1px solid black;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #A8C89E;
+    color: white; 
+}
+
+
+
+
