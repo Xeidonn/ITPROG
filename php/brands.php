@@ -18,6 +18,38 @@ session_start();
         </div>
     </section>
     <?php include '../php/footer.php'; ?>
+
+    <script>
+        const brandsFromDatabase = <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = '';
+        $dbname = "scentbonanza";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT DISTINCT PerfumeBrandName AS name, brandImage AS image 
+                FROM perfumes 
+                WHERE quantity > 0"; // Fetch only brands with products in stock
+        $result = $conn->query($sql);
+
+        $brands = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $brands[] = [
+                    "name" => htmlspecialchars($row['name']),
+                    "image" => htmlspecialchars($row['image'])
+                ];
+            }
+        }
+        $conn->close();
+
+        echo json_encode($brands);
+        ?>;
+    </script>
     <script src="../javascript/brandsscript.js"></script>
 </body>
 </html>

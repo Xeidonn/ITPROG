@@ -5,16 +5,43 @@ session_start(); // Start session to retrieve cart data
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = '';
+$dbname = "scentbonanza";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // Check if a delete request has been made
 if (isset($_POST['delete_product_id'])) {
-    // Get the product ID to be deleted
+    // Get the product index in the session array
     $deleteProductId = $_POST['delete_product_id'];
 
-    // Remove the product from the cart by its index in the session array
+    // Retrieve product details from the session cart
+    $removedProduct = $_SESSION['cart'][$deleteProductId];
+    $productId = $removedProduct['id']; // Assuming the 'id' field is stored in the cart
+    $quantity = 1; // Adjust based on the quantity logic in your application
+
+    // Remove the product from the cart
     unset($_SESSION['cart'][$deleteProductId]);
 
     // Reindex the cart array to fix any index gaps
     $_SESSION['cart'] = array_values($_SESSION['cart']);
+
+    // Increment the stock quantity in the database
+    $updateSql = "UPDATE perfumes SET quantity = quantity + ? WHERE perfumeID = ?";
+    $stmt = $conn->prepare($updateSql);
+    $stmt->bind_param("ii", $quantity, $productId);
+
+    if (!$stmt->execute()) {
+        echo "Error updating the stock: " . $stmt->error;
+    }
+
+    $stmt->close();
 }
 
 // Define discount if not set
