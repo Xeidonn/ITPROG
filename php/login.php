@@ -16,11 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
+        // Store the user's full name in the session
         // Store the user's full name, user ID, and admin status in the session
         $_SESSION['user'] = $user['first_name'] . ' ' . $user['last_name'];
+        $_SESSION['first_name'] = $user['first_name'];
+        $_SESSION['last_name'] = $user['last_name'];
         $_SESSION['user_id'] = $user['id'];  // Store user ID in session
         $_SESSION['is_admin'] = $user['is_admin'];  // Store admin status
-
+        
         // Check if the user is an admin
         if ($user['is_admin'] == 1) {
             // Redirect to the admin dashboard if the user is an admin
