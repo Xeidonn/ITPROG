@@ -1,8 +1,59 @@
-# Scent Bonanza
 
-## Description
+---
 
-Scent Bonanza is a cutting-edge e-commerce project developed by a team of dedicated students aiming to create a dynamic and user-friendly online platform. The primary goal of this project is to facilitate an accessible, enjoyable, and efficient shopping experience, enabling customers to browse, select, and purchase their favorite perfumes with ease. The website is designed to handle a range of functionalities tailored to consumer needs—from selecting brands and concentrations to managing purchases through an intuitive cart system. Furthermore, the platform will offer promotional discounts during special events and bulk purchases, enhancing the shopping experience and customer satisfaction.As the project unfolds in two main phases—Client Side and Server Side—the team focuses on ensuring robust functionality through the integration of technologies like PHP, MySQL, and XML for backend operations and security measures. This comprehensive approach ensures a secure, reliable, and scalable solution that not only meets the current e-commerce demands but also anticipates future expansions and integrations.
+# E-Commerce Website
+
+## Overview
+The E-Commerce Website project is a PHP and MySQL-based application that includes various functionalities such as item management, shopping carts, and social media features. This guide will walk you through how to set up and run the project using **XAMPP**.
+
+## Requirements
+- **XAMPP**: Install XAMPP, which includes Apache (for PHP) and MySQL (for the database).
+- **PHP**: PHP 7 or later version.
+
+## Installation Steps
+
+### Step 1: Clone the Repository
+Clone the repository to the XAMPP `htdocs` directory. You can clone the project by using the following command:
+```
+git clone https://github.com/Xeidonn/ITPROG.git
+```
+
+Alternatively, you can manually download the project and move it into your XAMPP `htdocs/demo/Machine Problem` folder.
+
+### Step 2: Import the Database
+1. Open **phpMyAdmin** by going to `http://localhost/phpmyadmin/` in your browser.
+2. Create a new database (e.g., `scentbonanza`).
+3. Import the database SQL file:
+    - Go to the **Import** tab in phpMyAdmin.
+    - Select the file `scentbonanza.sql` and execute the import.
+
+### Step 3: Configure the Project
+1. Make sure your project is located in the `Machine Project` folder under XAMPP. For example:
+   ```
+   C:\xampp\htdocs\demo\ITPROG\Machine Project
+   ```
+
+2. Open `dbconnect.php` (or the appropriate configuration file) and set your MySQL credentials and database name:
+   ```php
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "scentbonanza";  // The database you created in phpMyAdmin
+   ```
+
+### Step 4: Run the Project
+1. Start the Apache and MySQL services in XAMPP Control Panel.
+2. Open your browser and navigate to:
+   ```
+   http://localhost/ITPROG_VILORIA/ITPROG/
+   ```
+   This should load the main page of your project.
+
+### Folder Structure
+- **php**: This contains the PHP files for the web application.
+- **images**: This contains the images for the web application.
+- **css**: This folder contains Cascading Style Sheets for the web application.
+- **javascript**: This folder contains the script files for the web application.
 
 ## Sample Screenshots
 
@@ -45,3 +96,4 @@ carll_perez@dlsu.edu.ph
 james_matthew_perez@dlsu.edu.ph
 juan_butiong@dlsu.edu.ph
 
+---
