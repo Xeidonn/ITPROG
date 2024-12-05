@@ -15,6 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         // Store the user's full name in the session
         $_SESSION['user'] = $user['first_name'] . ' ' . $user['last_name'];
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['first_name'] = $user['first_name'];
+        $_SESSION['last_name'] = $user['last_name'];
 
         // Redirect to the homepage after a successful login
         header('Location: ../php/home.php');
