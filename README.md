@@ -45,7 +45,7 @@ Alternatively, you can manually download the project and move it into your XAMPP
 1. Start the Apache and MySQL services in XAMPP Control Panel.
 2. Open your browser and navigate to:
    ```
-   (http://localhost/demo/ITPROG/Machine%20Project/php)
+   localhost/demo/ITPROG/Machine Project
    ```
    This should load the main page of your project.
 
