@@ -82,18 +82,10 @@ Here are a few screenshots of the Scent Bonanza Perfume Catalog project:
 
 ## Contributors
 
-- BUTIONG, Juan Francisco P.
-- KALINISAN, Carl Adrian F.
-- PEREZ, Carll Josef R.
-- PEREZ, James Matthew F.
-- RAMIREZ, Myles Clement D.
-
-## Contact
-
-myles_ramirez@dlsu.edu.ph
-carl_kalinisan@dlsu.edu.ph
-carll_perez@dlsu.edu.ph
-james_matthew_perez@dlsu.edu.ph
-juan_butiong@dlsu.edu.ph
+- BUTIONG, Juan Francisco P.    |     juan_butiong@dlsu.edu.ph
+- KALINISAN, Carl Adrian F.     |     carl_kalinisan@dlsu.edu.ph
+- PEREZ, Carll Josef R.         |     carll_perez@dlsu.edu.ph
+- PEREZ, James Matthew F.       |     james_matthew_perez@dlsu.edu.ph
+- RAMIREZ, Myles Clement D.     |     myles_ramirez@dlsu.edu.ph
 
 ---
