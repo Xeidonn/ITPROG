@@ -82,11 +82,11 @@ Here are a few screenshots of the Scent Bonanza Perfume Catalog project:
 
 ## Contributors
 
-BUTIONG, Juan Francisco P.
-KALINISAN, Carl Adrian F.
-PEREZ, Carll Josef R.
-PEREZ, James Matthew F.
-RAMIREZ, Myles Clement D.
+- BUTIONG, Juan Francisco P.
+- KALINISAN, Carl Adrian F.
+- PEREZ, Carll Josef R.
+- PEREZ, James Matthew F.
+- RAMIREZ, Myles Clement D.
 
 ## Contact
 
