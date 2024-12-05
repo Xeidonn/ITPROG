@@ -8,54 +8,50 @@ const productList = document.getElementById('productList');
 
 // Update price range display
 priceRange.addEventListener('input', () => {
-    const minPrice = priceRange.min;
     const maxPrice = priceRange.max;
     const value = priceRange.value;
     priceRangeValue.textContent = `₱${value} - ₱${maxPrice}`;
-    filterProducts();
+    filterProducts(); // Trigger filter update
 });
 
-// Update product list based on filter
+// Update product list based on filters
 function filterProducts() {
-    const price = priceRange.value;
+    const price = parseInt(priceRange.value);
     const concentration = concentrationSelect.value;
     const size = sizeSelect.value;
 
     const perfumes = document.querySelectorAll('.perfume');
     perfumes.forEach(perfume => {
-        const productPrice = parseInt(perfume.getAttribute('data-price'));
-        const productConcentration = perfume.getAttribute('data-concentration');
-        const productSize = perfume.getAttribute('data-size');
+        // Fetch product attributes with fallback defaults
+        const productPrice = parseInt(perfume.getAttribute('data-price') || 0);
+        const productConcentration = perfume.getAttribute('data-concentration') || '';
+        const productSize = perfume.getAttribute('data-size') || '';
 
-        let show = true;
+        // Determine visibility
+        const show = 
+            productPrice <= price && 
+            (concentration === 'all' || concentration === productConcentration) &&
+            (size === 'all' || size === productSize);
 
-        // Price filter
-        if (productPrice > price) {
-            show = false;
-        }
+        // Toggle product visibility
+        perfume.style.display = show ? 'block' : 'none';
 
-        // Concentration filter
-        if (concentration !== 'all' && concentration !== productConcentration) {
-            show = false;
-        }
-
-        // Size filter
-        if (size !== 'all' && size !== productSize) {
-            show = false;
-        }
-
-        if (show) {
-            perfume.style.display = 'block';
-        } else {
-            perfume.style.display = 'none';
-        }
+        // Debugging output
+        console.log({
+            product: perfume.querySelector('h3')?.innerText || 'Unknown Product',
+            price: productPrice,
+            concentration: productConcentration,
+            size: productSize,
+            visible: show,
+        });
     });
 }
 
 // Sorting functionality
 sortSelect.addEventListener('change', () => {
     const sortBy = sortSelect.value;
-    let perfumes = Array.from(document.querySelectorAll('.perfume'));
+    const perfumes = Array.from(document.querySelectorAll('.perfume'));
+
     switch (sortBy) {
         case 'price-low-high':
             perfumes.sort((a, b) => parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price')));
@@ -66,12 +62,15 @@ sortSelect.addEventListener('change', () => {
         case 'alphabetical':
             perfumes.sort((a, b) => a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText));
             break;
-     
-        default:
+        case 'reverse-alphabetical':
+            perfumes.sort((a, b) => b.querySelector('h3').innerText.localeCompare(a.querySelector('h3').innerText));
             break;
+        default:
+            console.warn('Unknown sort option:', sortBy);
+            return;
     }
 
-    // Reattach sorted perfumes
+    // Reattach sorted elements to the DOM
     perfumes.forEach(perfume => {
         productList.appendChild(perfume);
     });
