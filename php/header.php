@@ -35,9 +35,11 @@
                         ?>
                     </span>
                 </a>
-
+                
                 <?php if (isset($_SESSION["user"])): ?>
-                    <span class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></span>
+                    <a href="admindashboard.php" class="user-name-link">
+                        <span class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></span>
+                    </a>
                     <a href="../php/logout.php" class="text-link">Log-out</a>
                 <?php else: ?>
                     <a href="../php/login.php">Log-in</a>

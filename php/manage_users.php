@@ -233,7 +233,7 @@ $conn->close();
                 <label for="email">Email</label>
                 <input type="email" name="email" value="<?php echo htmlspecialchars($user_data['email']); ?>" required>
 
-                <label for="password">Password (Leave empty to keep current)</label>
+                <label for="password">Password</label>
                 <input type="password" name="password">
 
                 <label for="is_disabled">Status</label>
@@ -252,8 +252,10 @@ $conn->close();
         </section>
     </div>
 </section>
-
-<?php include '../php/footer.php'; ?>
-
+<<section class="footer">
+    <div class="copyright">
+         &copy; <?php echo date("Y"); ?>, Scent Bonanza
+    </div>
+</section>
 </body>
 </html>
