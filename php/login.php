@@ -4,8 +4,11 @@ require '../php/dbconnect.php'; // Database connection.
 session_start(); // Start the session to access session variables.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
+
+    // Sanitize email input
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
     // Query the database to find the user by email
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
@@ -13,16 +16,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
-        // Store the user's full name in the session
+        // Store the user's full name, user ID, and admin status in the session
         $_SESSION['user'] = $user['first_name'] . ' ' . $user['last_name'];
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['first_name'] = $user['first_name'];
-        $_SESSION['last_name'] = $user['last_name'];
+        $_SESSION['user_id'] = $user['id'];  // Store user ID in session
+        $_SESSION['is_admin'] = $user['is_admin'];  // Store admin status
 
-        // Redirect to the homepage after a successful login
-        header('Location: ../php/home.php');
-        exit;
+        // Check if the user is an admin
+        if ($user['is_admin'] == 1) {
+            // Redirect to the admin dashboard if the user is an admin
+            header('Location: ../php/admindashboard.php');
+            exit;
+        } else {
+            // Redirect to the homepage for regular users
+            header('Location: ../php/home.php');
+            exit;
+        }
     } else {
+        // Display an error message if credentials are incorrect
         $error = "Invalid email or password.";
     }
 }
